@@ -1,12 +1,5 @@
 type: redoc
-definitionId: petstore
-showInfo: true
-expand: true
-settings:
-  generateCodeSamples:
-    languages:
-      - lang: curl
-definitionId: admin
+definitionId: petstore, admin
 showInfo: true
 expand: true
 settings:
