@@ -6,3 +6,11 @@ settings:
   generateCodeSamples:
     languages:
       - lang: curl
+type: redoc
+definitionId: admin
+showInfo: true
+expand: true
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
