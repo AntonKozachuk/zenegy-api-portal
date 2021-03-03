@@ -38,14 +38,15 @@ training:
         page: developer-portal/mdx.mdx
       - label: Creating React components
         page: developer-portal/custom-component.mdx
-  - group: Hours reference
-    expanded: false
-    pages:
-      - page: openapi/hours.page.yaml/*
-  - group: Documents reference
+  - group: Documents
     expanded: false
     pages:
       - page: openapi/documents.page.yaml/*
+  - group: Admin
+    expanded: false
+    pages:
+      - page: openapi/admin.page.yaml/*
+      
 
 alternative:
   - page: developer-portal/sidebar-alternative.md
