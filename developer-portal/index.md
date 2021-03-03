@@ -20,7 +20,7 @@ Spend between an hour and a day playing with the most commonly utilized features
 Follow the training exercises sequentially.
 Or cherry-pick them independently if you're limited on time.
 
-- [Plain markdown pages](markdown.md)
+<!-- - [Plain markdown pages](markdown.md)
 - [Changing the url paths](awesome/folders.md)
 - [Markdown with a mermaid diagram](mermaid.md)
 - [The page table of contents](page-table-of-contents.md)
@@ -35,7 +35,7 @@ Or cherry-pick them independently if you're limited on time.
 - [Modify the homepage](home-page.md)
 - [Modify the OAS definitions](oas-definitions.md)
 - [Adding a response object to an MDX page](mdx.mdx)
-- [Upgrade to a different version of the developer portal](upgrade.md)
+- [Upgrade to a different version of the developer portal](upgrade.md) -->
 
 Upon completion, you may have questions, or you may be ready to start building your content out.
 Learn how to [deploy the developer portal](https://docs.redoc.ly/ci-cd-workflows/) to our global CDN or contact us about purchasing an enterprise license key.
