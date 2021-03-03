@@ -17,6 +17,10 @@ training:
     expanded: false
     pages:
       - page: openapi/admin.page.yaml/*
+  - group: Numbers
+    expanded: false
+    pages:
+      - page: openapi/numbers.page.yaml/*
       
 
 alternative:

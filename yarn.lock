@@ -1463,10 +1463,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@redocly/developer-portal@1.0.0-beta.108":
-  version "1.0.0-beta.108"
-  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.108.tgz#2d5185aa34b16ad130f98eec345161488f448946"
-  integrity sha512-3KbCIe+MoNsSYDwTbnojofF3pzuznMNFe2zuPmVLVNSMt+QkMSrBILIGEyrmuNq6F+rSHYtCbhDjk/gzlxLzbQ==
+"@redocly/developer-portal@1.0.0-beta.111":
+  version "1.0.0-beta.111"
+  resolved "https://registry.yarnpkg.com/@redocly/developer-portal/-/developer-portal-1.0.0-beta.111.tgz#94df0cc0b0e34857a527ce5a7f1d1319df2d0d7c"
+  integrity sha512-5ANwfVtxzgJeegCG1U762srhBq3+6aPAyPePLICvf/QnOxV6E5W4rPyGXewXv570S2a3/90cxK019552h0KN+Q==
   dependencies:
     "@babel/core" "^7.6.2"
     "@babel/preset-env" "^7.6.2"
@@ -1487,6 +1487,7 @@
     gatsby "2.24.50"
     gatsby-cli "^2.11.4"
     gatsby-link "2.4.13"
+    gatsby-plugin-canonical-urls "^2.0.0"
     gatsby-plugin-google-analytics "2.3.13"
     gatsby-plugin-google-tagmanager "2.1.26"
     gatsby-plugin-heap "1.1.0"
@@ -6593,6 +6594,13 @@ gatsby-page-utils@^0.9.0:
     glob "^7.1.6"
     lodash "^4.17.20"
     micromatch "^4.0.2"
+
+gatsby-plugin-canonical-urls@^2.0.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-canonical-urls/-/gatsby-plugin-canonical-urls-2.10.0.tgz#8719099898b2436e7f1365002d48ef4b89c6fe51"
+  integrity sha512-Je15uAX0WX4i7fnEO7Rybhnxd7r3paWhly22APcE+lk5lcy8XIsHWXRKl6BS+frBmcHCgQYfqofhKsaQITHSsg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
 
 gatsby-plugin-google-analytics@2.3.13:
   version "2.3.13"

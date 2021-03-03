@@ -10,7 +10,7 @@ oasDefinitions:
   documents: https://api.redoc.ly/registry/zenegy-kca/documents/v1/bundle/default/openapi.yaml
   admin:   https://api.redoc.ly/registry/zenegy-kca/admin/v1/bundle/default/openapi.yaml
   # hours: https://api.redoc.ly/registry/zenegy-kca/hours/v1/bundle/default/openapi.yaml
-  # numbers: https://api.redoc.ly/registry/zenegy-kca/numbers/v1/bundle/default/openapi.yaml
+  numbers: https://api.redoc.ly/registry/zenegy-kca/numbers/v1/bundle/default/openapi.yaml
   # payrol-dk: https://api.redoc.ly/registry/zenegy-kca/payroll-dk/v1/bundle/default/openapi.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
@@ -33,7 +33,7 @@ auth:
         - scope:hours
 nav:
 
-  - label: Training exercises
+  - label: Api Reference
     page: developer-portal/index.md
 
   - label: External docs
@@ -43,14 +43,14 @@ nav:
   - search: true
 
 footer:
-  copyrightText: Copyright © Redocly 2019-2020. All right reserved.
+  copyrightText: © Zenegy ApS 2021
   columns:
     - group: Legal
       items:
         - label: Terms of Use
-          href: 'https://redoc.ly/subscription-agreement/'
+          href: 'https://zenegy.com/en/terms-of-service/'
         - label: Privacy Notice
-          href: 'https://redoc.ly/privacy-policy/'
+          href: 'https://zenegy.com/en/data-processing/'
         - label: Cookie Notice
           href: 'https://redoc.ly/privacy-policy/'
     - group: Support
