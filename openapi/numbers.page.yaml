@@ -1,9 +1,8 @@
 type: redoc
-definitionId: hours documents
+definitionId: numbers
 showInfo: true
 expand: true
 settings:
   generateCodeSamples:
     languages:
       - lang: curl
-      - lang: Dotnet

@@ -1,0 +1,8 @@
+type: redoc
+definitionId: payroll-dk
+showInfo: true
+expand: true
+settings:
+  generateCodeSamples:
+    languages:
+      - lang: curl
