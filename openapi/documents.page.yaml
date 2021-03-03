@@ -6,3 +6,4 @@ settings:
   generateCodeSamples:
     languages:
       - lang: curl
+      - lang: Dotnet

@@ -1,0 +1,3103 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Zenegy Admin API 1.0
+paths:
+  '/api/admin/admin-accounts/{adminAccountUid}/employees':
+    get:
+      tags:
+        - AdminAccountEmployees
+      operationId: GetAdminAccountEmployeesAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: filterPhrase
+          in: query
+          required: false
+          type: string
+        - name: sortByField
+          in: query
+          required: false
+          type: string
+        - name: sortByDirection
+          in: query
+          required: false
+          type: integer
+          format: int32
+          enum:
+            - 0
+            - 1
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin account successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AdminAccountEmployeeBaseDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    post:
+      tags:
+        - AdminAccountEmployees
+      operationId: CreateAdminAccountEmployeeAsync
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: request
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/CreateAdminAccountEmployeeRequest'
+      responses:
+        '200':
+          description: Admin account successfully created.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/employees/{adminAccountEmployeeUid}':
+    get:
+      tags:
+        - AdminAccountEmployees
+      operationId: GetAdminAccountEmployeeAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: adminAccountEmployeeUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin account employee successfully get.
+          schema:
+            $ref: '#/definitions/Result[AdminAccountEmployeeDto]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    put:
+      tags:
+        - AdminAccountEmployees
+      operationId: UpdateAdminAccountEmployeeDetailsAsync
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: adminAccountEmployeeUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: request
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/UpdateAdminAccountEmployeeRequest'
+      responses:
+        '200':
+          description: Admin account employee successfully updated.
+          schema:
+            $ref: '#/definitions/Result[AdminAccountEmployeeDto]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    delete:
+      tags:
+        - AdminAccountEmployees
+      operationId: DeleteAdminAccountEmployeeDetailsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: adminAccountEmployeeUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin account employee successfully deleted.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    patch:
+      tags:
+        - AdminAccountEmployees
+      operationId: InviteAdminAccountEmployeeAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: adminAccountEmployeeUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin account employee successfully invited.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/employees/{userUid}/approved':
+    get:
+      tags:
+        - AdminAccountEmployees
+      operationId: GetAdminAccountEmployeeActiveManagedAccountsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: userUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: filterPhrase
+          in: query
+          required: false
+          type: string
+        - name: sortByField
+          in: query
+          required: false
+          type: string
+        - name: sortByDirection
+          in: query
+          required: false
+          type: integer
+          format: int32
+          enum:
+            - 0
+            - 1
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin account employee active managed accounts successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AdminManagedAccountBaseDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/employees/{adminAccountEmployeeUid}/managed-accounts':
+    get:
+      tags:
+        - AdminAccountEmployees
+      operationId: GetAdminAccountEmployeeManagedAccountsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: adminAccountEmployeeUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin account employee managed accounts successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AccessToManagedAccountBaseDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  /api/admin/admin-accounts:
+    get:
+      tags:
+        - AdminAccounts
+      operationId: GetAdminAccountsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: filterPhrase
+          in: query
+          required: false
+          type: string
+        - name: sortByField
+          in: query
+          required: false
+          type: string
+        - name: sortByDirection
+          in: query
+          required: false
+          type: integer
+          format: int32
+          enum:
+            - 0
+            - 1
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin account successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AdminAccountBaseDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}':
+    get:
+      tags:
+        - AdminAccounts
+      operationId: GetAdminAccountDetailsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin account successfully get.
+          schema:
+            $ref: '#/definitions/Result[AdminAccountDto]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    patch:
+      tags:
+        - AdminAccounts
+      operationId: UpdateAdminAccountAsync
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: request
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/UpdateAdminAccountRequest'
+      responses:
+        '200':
+          description: Admin account successfully updated.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/approved':
+    get:
+      tags:
+        - AdminAccounts
+      operationId: GetApprovedAdminManagedAccountsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: filterPhrase
+          in: query
+          required: false
+          type: string
+        - name: sortByField
+          in: query
+          required: false
+          type: string
+        - name: sortByDirection
+          in: query
+          required: false
+          type: integer
+          format: int32
+          enum:
+            - 0
+            - 1
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin managed account successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AdminManagedAccountBaseDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/pending':
+    get:
+      tags:
+        - AdminAccounts
+      operationId: GetPendingAdminManagedAccountsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: filterPhrase
+          in: query
+          required: false
+          type: string
+        - name: sortByField
+          in: query
+          required: false
+          type: string
+        - name: sortByDirection
+          in: query
+          required: false
+          type: integer
+          format: int32
+          enum:
+            - 0
+            - 1
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin account successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AdminManagedAccountBaseDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/assigned-employees':
+    get:
+      tags:
+        - AdminAccounts
+      operationId: GetAdminAccountAssignedEmployeesAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: accessLevel
+          in: query
+          required: false
+          type: string
+        - name: filterPhrase
+          in: query
+          required: false
+          type: string
+        - name: sortByField
+          in: query
+          required: false
+          type: string
+        - name: sortByDirection
+          in: query
+          required: false
+          type: integer
+          format: int32
+          enum:
+            - 0
+            - 1
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin account successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AccessToManagedAccountDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/admin-managed/{managedAccountUid}':
+    get:
+      tags:
+        - AdminManagedAccounts
+      operationId: GetAdminManagedAccountAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin managed account successfully get.
+          schema:
+            $ref: '#/definitions/Result[AdminManagedAccountDto]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    delete:
+      tags:
+        - AdminManagedAccounts
+      operationId: DeleteAdminManagedAccountAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin managed account successfully deleted.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    patch:
+      tags:
+        - AdminManagedAccounts
+      operationId: UpdateAdminManagedAccountAsync
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: request
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/UpdateAdminManagedAccountRequest'
+      responses:
+        '200':
+          description: Admin managed account successfully updated.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/admin-managed/{managedAccountUid}/approve':
+    patch:
+      tags:
+        - AdminManagedAccounts
+      operationId: ApproveAdminManagedAccountAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin managed account successfully approved.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/admin-managed/{managedAccountUid}/reject':
+    patch:
+      tags:
+        - AdminManagedAccounts
+      operationId: RejectAdminManagedAccountAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin managed account successfully rejected.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/admin-managed/{managedAccountUid}/communication':
+    post:
+      tags:
+        - AdminManagedAccounts
+      operationId: SendCommunicationAsync
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: request
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/ManagedAccountContactRequest'
+      responses:
+        '200':
+          description: Communication successfully sent.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/admin-managed/{managedAccountUid}/assigned-employees':
+    get:
+      tags:
+        - AdminManagedAccounts
+      operationId: GetManagedAccountAssignedManagingEmployeesAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin account employee successfully get.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AccessToManagedAccountDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    post:
+      tags:
+        - AdminManagedAccounts
+      operationId: AssignEmployeesToManagedAccountAsync
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: request
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/AssignEmployeesToManagedAccountRequest'
+      responses:
+        '200':
+          description: Admin account employee successfully assigned.
+          schema:
+            $ref: '#/definitions/Result[PagedResponse[AccessToManagedAccountDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/admin-managed/{managedAccountUid}/assigned-employees/{adminAccountEmployeeUid}':
+    delete:
+      tags:
+        - AdminManagedAccounts
+      operationId: DeleteAssignedManagingAccessFromEmployeeAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: adminAccountEmployeeUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin account employee successfully removed.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/categories':
+    get:
+      tags:
+        - Categories
+      operationId: GetCategoriesAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Categories successfully get.
+          schema:
+            $ref: '#/definitions/Result[IReadOnlyList[CategoryDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/competences':
+    get:
+      tags:
+        - Competences
+      operationId: GetCompetencesAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Competences successfully get.
+          schema:
+            $ref: '#/definitions/Result[IReadOnlyList[CompetenceDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/admin-accounts/{adminAccountUid}/financial-systems':
+    get:
+      tags:
+        - FinancialSystems
+      operationId: GetFinancialSystemsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Financial systems successfully get.
+          schema:
+            $ref: '#/definitions/Result[IReadOnlyList[FinancialSystemDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/managed-accounts/{managedAccountUid}':
+    get:
+      tags:
+        - ManagedAccounts
+      operationId: GetManagedAccountAdminAccountsAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: skip
+          in: query
+          required: false
+          type: integer
+          format: int32
+        - name: take
+          in: query
+          required: false
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Admin managed account successfully get.
+          schema:
+            $ref: '#/definitions/Result[IReadOnlyList[AdminAccountBaseDto]]'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/managed-accounts/{managedAccountUid}/admin/{adminAccountUid}':
+    post:
+      tags:
+        - ManagedAccounts
+      operationId: CreateAdminManagedAccountAsync
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: request
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/CreateAdminManagedAccountRequest'
+      responses:
+        '200':
+          description: Admin managed account successfully created.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+    delete:
+      tags:
+        - ManagedAccounts
+      operationId: DeleteAdminManagedAccountAsync
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Admin managed account successfully deleted.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+  '/api/admin/managed-accounts/{managedAccountUid}/admin/{adminAccountUid}/is-assigned':
+    get:
+      tags:
+        - ManagedAccounts
+      operationId: CheckIfAdminAlreadyAssigned
+      consumes: []
+      produces:
+        - text/plain
+        - application/json
+        - text/json
+      parameters:
+        - name: adminAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+        - name: managedAccountUid
+          in: path
+          required: true
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: >-
+            Admin managed account successfully checked if assigned to admin
+            account.
+          schema:
+            $ref: '#/definitions/Result'
+        '401':
+          description: User is not authorized
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+        '403':
+          description: User does not have the required roles to access this action
+          schema:
+            $ref: '#/definitions/ProblemDetails'
+definitions:
+  'Result[PagedResponse[AdminAccountEmployeeBaseDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/PagedResponse[AdminAccountEmployeeBaseDto]'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'PagedResponse[AdminAccountEmployeeBaseDto]':
+    type: object
+    properties:
+      totalRecords:
+        format: int32
+        type: integer
+      totalDisplayRecords:
+        format: int32
+        type: integer
+      data:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/AdminAccountEmployeeBaseDto'
+  AdminAccountEmployeeBaseDto:
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+      photoUrl:
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  ProblemDetails:
+    type: object
+    properties:
+      type:
+        type: string
+      title:
+        type: string
+      status:
+        format: int32
+        type: integer
+      detail:
+        type: string
+      instance:
+        type: string
+    additionalProperties:
+      type: object
+  CreateAdminAccountEmployeeRequest:
+    required:
+      - name
+      - address
+      - city
+      - postalNumber
+    type: object
+    properties:
+      name:
+        maxLength: 150
+        minLength: 0
+        type: string
+      address:
+        maxLength: 50
+        minLength: 0
+        type: string
+      city:
+        maxLength: 50
+        minLength: 0
+        type: string
+      postalNumber:
+        maxLength: 20
+        minLength: 0
+        type: string
+      email:
+        maxLength: 75
+        minLength: 0
+        type: string
+      mobilePhone:
+        maxLength: 50
+        minLength: 0
+        type: string
+      linkedIn:
+        maxLength: 200
+        minLength: 0
+        type: string
+  Result:
+    type: object
+    properties:
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'Result[AdminAccountEmployeeDto]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/AdminAccountEmployeeDto'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  AdminAccountEmployeeDto:
+    type: object
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      postalCode:
+        type: string
+      linkedIn:
+        type: string
+      hasActiveUser:
+        type: boolean
+      name:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+      photoUrl:
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  UpdateAdminAccountEmployeeRequest:
+    required:
+      - name
+      - address
+      - city
+      - postalNumber
+    type: object
+    properties:
+      name:
+        maxLength: 150
+        minLength: 0
+        type: string
+      address:
+        maxLength: 50
+        minLength: 0
+        type: string
+      city:
+        maxLength: 50
+        minLength: 0
+        type: string
+      postalNumber:
+        maxLength: 20
+        minLength: 0
+        type: string
+      email:
+        maxLength: 75
+        minLength: 0
+        type: string
+      mobilePhone:
+        maxLength: 50
+        minLength: 0
+        type: string
+      linkedIn:
+        maxLength: 200
+        minLength: 0
+        type: string
+  'Result[PagedResponse[AdminManagedAccountBaseDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/PagedResponse[AdminManagedAccountBaseDto]'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'PagedResponse[AdminManagedAccountBaseDto]':
+    type: object
+    properties:
+      totalRecords:
+        format: int32
+        type: integer
+      totalDisplayRecords:
+        format: int32
+        type: integer
+      data:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/AdminManagedAccountBaseDto'
+  AdminManagedAccountBaseDto:
+    type: object
+    properties:
+      status:
+        format: int32
+        type: integer
+      name:
+        type: string
+      date:
+        format: date-time
+        type: string
+      logoUrl:
+        type: string
+      accessLevel:
+        format: int32
+        type: integer
+      vatNumber:
+        type: string
+      managedAccountUid:
+        format: uuid
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  'Result[PagedResponse[AccessToManagedAccountBaseDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/PagedResponse[AccessToManagedAccountBaseDto]'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'PagedResponse[AccessToManagedAccountBaseDto]':
+    type: object
+    properties:
+      totalRecords:
+        format: int32
+        type: integer
+      totalDisplayRecords:
+        format: int32
+        type: integer
+      data:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/AccessToManagedAccountBaseDto'
+  AccessToManagedAccountBaseDto:
+    type: object
+    properties:
+      accessLevel:
+        format: int32
+        type: integer
+      date:
+        format: date-time
+        type: string
+      managedAccount:
+        $ref: '#/definitions/ManagedAccountDto'
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  ManagedAccountDto:
+    type: object
+    properties:
+      name:
+        type: string
+      vatNumber:
+        type: string
+      logoUrl:
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  'Result[PagedResponse[AdminAccountBaseDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/PagedResponse[AdminAccountBaseDto]'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'PagedResponse[AdminAccountBaseDto]':
+    type: object
+    properties:
+      totalRecords:
+        format: int32
+        type: integer
+      totalDisplayRecords:
+        format: int32
+        type: integer
+      data:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/AdminAccountBaseDto'
+  AdminAccountBaseDto:
+    type: object
+    properties:
+      name:
+        type: string
+      vatNumber:
+        type: string
+      logoUrl:
+        type: string
+      contactPersonEmail:
+        type: string
+      contactPersonPhone:
+        type: string
+      city:
+        type: string
+      address:
+        type: string
+      postalCode:
+        type: string
+      latitude:
+        format: double
+        type: number
+      longitude:
+        format: double
+        type: number
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  'Result[AdminAccountDto]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/AdminAccountDto'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  AdminAccountDto:
+    type: object
+    properties:
+      createdOn:
+        format: date-time
+        type: string
+      phone:
+        type: string
+      contactPersonName:
+        type: string
+      description:
+        type: string
+      showInAdminPool:
+        type: boolean
+      adminCompetences:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/CompetenceDto'
+      adminCategory:
+        $ref: '#/definitions/CategoryDto'
+      isBranchAccount:
+        type: boolean
+      name:
+        type: string
+      vatNumber:
+        type: string
+      logoUrl:
+        type: string
+      contactPersonEmail:
+        type: string
+      contactPersonPhone:
+        type: string
+      city:
+        type: string
+      address:
+        type: string
+      postalCode:
+        type: string
+      latitude:
+        format: double
+        type: number
+      longitude:
+        format: double
+        type: number
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  CompetenceDto:
+    type: object
+    properties:
+      name:
+        type: string
+      resourceKey:
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  CategoryDto:
+    type: object
+    properties:
+      name:
+        type: string
+      resourceKey:
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  UpdateAdminAccountRequest:
+    required:
+      - vatNumber
+      - name
+      - address
+      - postalCode
+      - city
+    type: object
+    properties:
+      categoryUid:
+        format: uuid
+        type: string
+      competenceUids:
+        uniqueItems: false
+        type: array
+        items:
+          format: uuid
+          type: string
+      description:
+        type: string
+      vatNumber:
+        maxLength: 30
+        minLength: 0
+        type: string
+      name:
+        maxLength: 300
+        minLength: 0
+        type: string
+      address:
+        maxLength: 100
+        minLength: 0
+        type: string
+      postalCode:
+        maxLength: 20
+        minLength: 0
+        type: string
+      city:
+        maxLength: 50
+        minLength: 0
+        type: string
+      phone:
+        maxLength: 50
+        minLength: 0
+        type: string
+      contactPersonName:
+        maxLength: 150
+        minLength: 0
+        type: string
+      contactPersonEmail:
+        maxLength: 75
+        minLength: 0
+        type: string
+      contactPersonPhone:
+        maxLength: 50
+        minLength: 0
+        type: string
+      latitude:
+        format: double
+        type: number
+      longitude:
+        format: double
+        type: number
+      showInAdminPool:
+        type: boolean
+  'Result[PagedResponse[AccessToManagedAccountDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/PagedResponse[AccessToManagedAccountDto]'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'PagedResponse[AccessToManagedAccountDto]':
+    type: object
+    properties:
+      totalRecords:
+        format: int32
+        type: integer
+      totalDisplayRecords:
+        format: int32
+        type: integer
+      data:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/AccessToManagedAccountDto'
+  AccessToManagedAccountDto:
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+      photoUrl:
+        type: string
+      status:
+        format: int32
+        type: integer
+      accessLevel:
+        format: int32
+        type: integer
+      date:
+        format: date-time
+        type: string
+      managedAccount:
+        $ref: '#/definitions/ManagedAccountDto'
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  'Result[AdminManagedAccountDto]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        $ref: '#/definitions/AdminManagedAccountDto'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  AdminManagedAccountDto:
+    type: object
+    properties:
+      address:
+        type: string
+      postalCode:
+        type: string
+      city:
+        type: string
+      email:
+        type: string
+      phone:
+        type: string
+      contactPersonName:
+        type: string
+      contactPersonPhone:
+        type: string
+      contactPersonEmail:
+        type: string
+      financialSystem:
+        type: string
+      status:
+        format: int32
+        type: integer
+      name:
+        type: string
+      date:
+        format: date-time
+        type: string
+      logoUrl:
+        type: string
+      accessLevel:
+        format: int32
+        type: integer
+      vatNumber:
+        type: string
+      managedAccountUid:
+        format: uuid
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  UpdateAdminManagedAccountRequest:
+    type: object
+    properties:
+      financialSystemTypeUid:
+        format: uuid
+        type: string
+  ManagedAccountContactRequest:
+    required:
+      - isSms
+      - isEmail
+      - title
+      - body
+    type: object
+    properties:
+      isSms:
+        type: boolean
+      isEmail:
+        type: boolean
+      title:
+        type: string
+      body:
+        type: string
+  AssignEmployeesToManagedAccountRequest:
+    type: object
+    properties:
+      employeeUids:
+        uniqueItems: false
+        type: array
+        items:
+          format: uuid
+          type: string
+      accessLevel:
+        type: string
+  'Result[IReadOnlyList[CategoryDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/CategoryDto'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'Result[IReadOnlyList[CompetenceDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/CompetenceDto'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  'Result[IReadOnlyList[FinancialSystemDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/FinancialSystemDto'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  FinancialSystemDto:
+    type: object
+    properties:
+      name:
+        type: string
+      resourceKey:
+        type: string
+      id:
+        format: int32
+        type: integer
+      uid:
+        format: uuid
+        type: string
+  'Result[IReadOnlyList[AdminAccountBaseDto]]':
+    type: object
+    properties:
+      isEmpty:
+        type: boolean
+        readOnly: true
+      value:
+        uniqueItems: false
+        type: array
+        items:
+          $ref: '#/definitions/AdminAccountBaseDto'
+        readOnly: true
+      isFailure:
+        type: boolean
+        readOnly: true
+      isSuccess:
+        type: boolean
+        readOnly: true
+      message:
+        type: string
+        readOnly: true
+      resultType:
+        format: int32
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+        type: integer
+        readOnly: true
+      httpStatusCode:
+        format: int32
+        enum:
+          - 100
+          - 101
+          - 102
+          - 103
+          - 200
+          - 201
+          - 202
+          - 203
+          - 204
+          - 205
+          - 206
+          - 207
+          - 208
+          - 226
+          - 300
+          - 300
+          - 301
+          - 301
+          - 302
+          - 302
+          - 303
+          - 303
+          - 304
+          - 305
+          - 306
+          - 307
+          - 307
+          - 308
+          - 400
+          - 401
+          - 402
+          - 403
+          - 404
+          - 405
+          - 406
+          - 407
+          - 408
+          - 409
+          - 410
+          - 411
+          - 412
+          - 413
+          - 414
+          - 415
+          - 416
+          - 417
+          - 421
+          - 422
+          - 423
+          - 424
+          - 426
+          - 428
+          - 429
+          - 431
+          - 451
+          - 500
+          - 501
+          - 502
+          - 503
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 510
+          - 511
+        type: integer
+        readOnly: true
+  CreateAdminManagedAccountRequest:
+    required:
+      - accessLevel
+    type: object
+    properties:
+      accessLevel:
+        type: string
+securityDefinitions:
+  oauth2:
+    flow: implicit
+    authorizationUrl: 'https://auth.zenegy.com/auth/authorize'
+    tokenUrl: 'https://auth.zenegy.com/auth/token'
+    scopes:
+      Key: 'scope:admin'
+    type: oauth2
+    description: Admin OAuth2 Implicit Grant
+security:
+  - oauth2:
+      - 'scope:admin'
+tags: []
