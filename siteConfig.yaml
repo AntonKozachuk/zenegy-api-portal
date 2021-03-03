@@ -5,10 +5,10 @@ meta:
 headerIcon: ./images/zenegy-icon-white.png
 enableToc: true
 oasDefinitions:
-    documents: ./openapi/documents.yaml
-    admin: ./openapi/admin.yaml
-  # documents: https://api.redoc.ly/registry/zenegy-kca/documents/v1/bundle/default/openapi.yaml
-  # admin:   https://api.redoc.ly/registry/zenegy-kca/admin/v1/bundle/default/openapi.yaml
+    # documents: ./openapi/documents.yaml
+    # admin: ./openapi/admin.yaml
+  documents: https://api.redoc.ly/registry/zenegy-kca/documents/v1/bundle/default/openapi.yaml
+  admin:   https://api.redoc.ly/registry/zenegy-kca/admin/v1/bundle/default/openapi.yaml
   # hours: https://api.redoc.ly/registry/zenegy-kca/hours/v1/bundle/default/openapi.yaml
   # numbers: https://api.redoc.ly/registry/zenegy-kca/numbers/v1/bundle/default/openapi.yaml
   # payrol-dk: https://api.redoc.ly/registry/zenegy-kca/payroll-dk/v1/bundle/default/openapi.yaml
