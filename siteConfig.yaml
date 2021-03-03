@@ -5,8 +5,9 @@ meta:
 headerIcon: ./images/logo.png
 enableToc: true
 oasDefinitions:
-  petstore: ./openapi/petstore.yaml
-  admin: https://api.redoc.ly/registry/zenegy-kca/admin/v1/bundle/default/openapi.yaml
+  documents: ./openapi/documents.yaml
+  hours: ./openapi/hours.yaml
+ # numbers: ./openapi/numbers.yaml
   # add links to definitions in our API registry by using a fully qualified URL.
 stylesheets:
   - https://fonts.googleapis.com/css?family=Roboto:300,400,600,700
@@ -17,6 +18,15 @@ stylesheets:
 #  trackingId: UA-45997213-1
 #scripts:
 #  - ./static/intercom.js
+auth:
+  idps:
+    main:
+      type: oidc
+      configurationUrl: https://auth.zenegy.com/.well-known/openid-configuration
+      clientId:  cf86d0b437245ad8ebce4d7291183b6
+      clientSecret: MzIwMWExMGZhOTcyNDExOTkwYTk2NDY3N2UzMDYzZDk=
+      scopes:
+        - scope:hours
 nav:
 
   - label: Training exercises
